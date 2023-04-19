@@ -5,11 +5,11 @@ services:
     build:
       context: .
     volumes:
-      - ./watch-this:/watch-this
+      - ./watch-this:/test/watch-this
     command: [ "main.py" ]
   async-test:
     build:
       context: .
     volumes:
-      - ./watch-this:/watch-this
+      - ./watch-this:/test/watch-this
     command: [ "async-main.py" ]
