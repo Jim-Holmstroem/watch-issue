@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  test:
+    build:
+      context: .
+    volumes:
+      - ./watch-this:/watch-this
+    command: [ "main.py" ]
+  async-test:
+    build:
+      context: .
+    volumes:
+      - ./watch-this:/watch-this
+    command: [ "async-main.py" ]
