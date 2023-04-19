@@ -6,10 +6,25 @@ services:
       context: .
     volumes:
       - ./watch-this:/test/watch-this
-    command: [ "main.py" ]
+      - ./watch-this-folder/:/test/watch-this-folder
+    environment:
+      - WATCHFILES_FORCE_POLLING
+    command: [ "python", "-m", "main.py", "${WATCH_THIS}"]
   async-test:
     build:
       context: .
     volumes:
       - ./watch-this:/test/watch-this
-    command: [ "async-main.py" ]
+      - ./watch-this-folder/:/test/watch-this-folder
+    environment:
+      - WATCHFILES_FORCE_POLLING
+    command: [ "python", "-m", "async-main.py", "${WATCH_THIS}"]
+  watchfiles:
+    build:
+      context: .
+    volumes:
+      - ./watch-this:/test/watch-this
+      - ./watch-this-folder/:/test/watch-this-folder
+    environment:
+      - WATCHFILES_FORCE_POLLING
+    command: [ "watchfiles", "echo reloaded", "${WATCH_THIS}" , "--verbose" ]
