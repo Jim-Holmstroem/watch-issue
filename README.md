@@ -1,5 +1,8 @@
 # watch-issue
 
+# NOTE _not_ an issue
+The culprit was a missing flush for prints.
+
 ## run in docker
 ### forced polling
 ```bash
