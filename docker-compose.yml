@@ -28,3 +28,13 @@ services:
     environment:
       - WATCHFILES_FORCE_POLLING
     command: [ "watchfiles", "echo reloaded", "${WATCH_THIS}" , "--verbose" ]
+  process-test:
+    build:
+      context: .
+    volumes:
+      - ./watch-this:/test/watch-this
+      - ./watch-this-folder/:/test/watch-this-folder
+    environment:
+      - WATCHFILES_FORCE_POLLING
+    command: [ "python", "-m", "process-main.py", "${WATCH_THIS}" ]
+ 
